@@ -18,7 +18,7 @@
         
       
         
-        <link href="{{asset('css/style.css')}}" rel="stylesheet">
+        <link href="{{asset('public/css/style.css')}}" rel="stylesheet">
 
 
 
