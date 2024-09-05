@@ -22,6 +22,16 @@ class StoreAppointmentRequest extends FormRequest
             'name' => [
                 'required',
             ],
+            'duration' => [
+                'required',
+            ],
+            'duration_type' => [
+                'required',
+            ],
+            'duration_type' => [
+                'required',
+            ],
+
             'start_time'  => [
                 'required',
                 'date_format:' . config('panel.date_format') . ' ' . config('panel.time_format'),

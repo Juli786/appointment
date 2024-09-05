@@ -13,6 +13,7 @@ use App\Models\AppointmentSlot;
 use App\Models\Service;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 use Yajra\DataTables\Facades\DataTables;
 
@@ -28,13 +29,17 @@ class AppointmentsController extends Controller
             $table->addColumn('actions', '&nbsp;');
 
             $table->editColumn('actions', function ($row) {
-                $viewGate      = 'appointment_show';
-                $editGate      = 'appointment_edit';
-                $deleteGate    = 'appointment_delete';
+                
                 $crudRoutePart = 'appointments';
-
+                $shareLink = url("/share").'/'.Auth::user()->email.'/'.$this->enc($row->id);
+                
+                $duration =  ($row->duration_type == "min") ? $row->duration ." Minutes" : $row->duration ." hrs";
+                $sm_duration =  ($row->duration_type == "min") ? $row->duration ." Min" : $row->duration ." hrs";
                 return view('partials.datatablesActions', compact(
                     'crudRoutePart',
+                    'shareLink',
+                    'sm_duration',
+                    'duration',
                     'row'
                 ));
             });

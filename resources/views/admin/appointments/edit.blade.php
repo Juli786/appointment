@@ -93,6 +93,7 @@
 
     </div>
 </div>
+
 @endsection
 @section('scripts')
     <script>
@@ -117,7 +118,7 @@
         }
             $(document).on('focus', '.datetime', function(){
                 $(this).datetimepicker({
-                    format: 'YYYY-MM-DD HH:mm',
+                    format: 'YYYY-MM-DD hh:mm',
                     locale: 'en',
                     sideBySide: true,
                     stepping: 15
